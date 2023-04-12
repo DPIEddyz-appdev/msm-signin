@@ -15,6 +15,47 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <% if session.fetch(:user_id) == nil %>
+        <li>
+          <a href="/user_sign_up">Sign up</a>
+        </li>
+        <li>
+          <a href="/user_sign_in">Sign in</a>
+        </li>
+        <% else %>
+        <li>
+          <a href="/user_sign_out">Sign out</a>
+        </li>
+        <% end %>
+
+        <li>
+          <a href="/movies">Movies</a>
+        </li>
+
+        <li>
+          <a href="/directors">Directors</a>
+        </li>
+
+        <li>
+          <a href="/actors">Actors</a>
+        </li>
+
+        <li>
+          <a href="/characters">Characters</a>
+        </li>
+      </ul>
+    </nav>
+
+    <% if notice != nil%>
+      <p style="color: green"><%= notice %></p>
+    <% end %>
+
+    <% if alert != nil %>
+      <p style="color: red"><%= alert %></p>
+    <% end%>
+
     <%= yield %>
   </body>
 </html>
